@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Clintt's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Universal Styles */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: white;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds shadow */
+}
+
+header.hidden {
+    display: none;
+}
+
+.logo {
+    font-size: 1em;
+    color: #555;
+    cursor: default;
+    white-space: nowrap;
+    text-decoration: none; /* Remove underline */
+}
+
+.logo span {
+    color: #ffd524;
+}
+.logo:hover {
+    opacity: 0.8; /* Optional hover effect */
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+}
+
+.navigation a {
+    font-size: 1em;
+    color: #555;
+    text-decoration: none;
+    margin-right: 30px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.navigation a:hover {
+    color: #7d2ae8;
+}
+
+.btn-talk {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 20px;
+    background: #7d2ae8;
+    border-radius: 10px;
+    border: 2px solid #7d2ae8;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn-talk:hover {
+    color: #7d2ae8;
+    background: transparent;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    cursor: pointer;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+}
+
+.hamburger .line {
+    height: 5px;
+    background-color: #555;
+    border-radius: 5px;
+}
+/* Initially hide the sections */
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
+/* Responsive Adjustments */
+@media (max-width: 1050px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    .logo {
+        font-size: 1.5em; /* Shrinks the logo size */
+    }
+
+    .navigation {
+        display: none; /* Hide navigation links on mobile by default */
+        width: 200px; /* Set the width of the dropdown */
+        position: absolute;
+        top: 80px;
+        right: 20px; /* Align the dropdown to the right */
+        background: white;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        border-radius: 10px;
+    }
+
+    .navigation a {
+        font-size: 1em;
+        padding: 10px 20px; /* Add padding for spacing */
+        margin-right: 0;
+        display: block;
+    }
+
+    .btn-talk {
+        padding: 5px 15px;
+        font-size: 0.9em; /* Shrinks the button */
+    }
+
+    .hamburger {
+        display: flex; /* Show the hamburger menu on mobile */
+    }
+}
+
+/* When hamburger menu is active (visible) */
+.navigation.active {
+    display: flex;
+}
+
+/* Remove the default margin and spacing from the links */
+.navigation a {
+    margin-bottom: 10px;
+}
+
+/* Close menu when clicked on a menu item */
+.navigation a:focus,
+.navigation a:active {
+    color: #7d2ae8;
+}
+
+/* When the navigation is active, ensure proper visibility */
+.navigation.active {
+    display: flex;
+}
+
+/* For very small screens (under 480px) */
+@media (max-width: 480px) {
+    header {
+        padding: 10px 15px;
+    }
+
+    .logo {
+        font-size: 1.2em; /* Further shrink logo size */
+    }
+
+    .navigation a {
+        font-size: 0.8em; /* Further shrink navigation links */
+    }
+
+    .btn-talk {
+        font-size: 0.8em;
+        padding: 5px 10px; /* Adjust button size */
+    }
+}
+        /* Home Section */
+.home {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background-color: #d1d7e0;
+    align-items: center;
+    justify-content: flex-start; /* Keep content aligned to the left */
+    padding: 30px 100px;
+    background-size: cover;
+    background-position: center center;
+}
+.bg {
+    animation: slide 7s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #20012e 50%, #480765 50%);
+    bottom: 0;
+    left: -50%;
+    opacity: 0.5;
+    position: fixed;
+    right: -50%;
+    top: 0;
+    z-index: -1;
+}
+
+.bg2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 8s;
+}
+
+.bg3 {
+    animation-duration: 10s;
+}
+
+/* Heading Styling */
+h1 {
+    font-family: monospace;
+    font-size: 3em;
+}
+
+/* Keyframes for Sliding Effect */
+@keyframes slide {
+    0% {
+        transform: translateX(-25%);
+    }
+    100% {
+        transform: translateX(25%);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .home {
+        background-size: auto 100%; /* Adjust image size to fit the width of the screen */
+        background-position: top center; /* Focuses on the top of the image */
+        padding: 20px 50px; /* Adjust padding for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .home {
+        background-size: auto 100%; /* Adjust image size to fit better on mobile screens */
+        background-position: top center; /* Ensures focus on the top */
+        padding: 15px 30px; /* Further reduce padding */
+    }
+}
+        .content {
+    max-width: 500px;
+    color: #555;
+    text-align: left; /* Align text to the left */
+        }
+        .content h2 {
+            font-size: 3em;
+        }
+
+        .content h2 span {
+            color: #ecb602;
+        }
+        .content h4 {
+            font-size: 2em;
+        }
+
+        .content p {
+            padding: 10px 0 40px 0;
+        }
+/* Image positioning */
+.intro-img {
+    position: absolute;
+    top: 250px; /* Position image near the top */
+    right: 100px; /* Position image to the right */
+    width: 350px; /* Adjust image size */
+    height: 350px; /* Set the height equal to the width for a perfect circle */
+    border-radius: 50%; /* Make the image circular */
+    object-fit: cover; /* Ensures the image fits within the circle without distortion */
+    transition: all 0.5s ease; /* Smooth transition for move and hide */
+}
+
+
+        .btn-group a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 40px;
+            background: #7d2ae8;
+            border-radius: 10px;
+            border: 2px solid #7d2ae8;
+            font-weight: 500;
+            transition: .3s;
+        }
+
+        .btn-group a:hover:nth-child(1) {
+            color: #7d2ae8;
+            background: transparent;
+        }
+
+        .btn-group a:nth-child(2) {
+            color: #7d2ae8;
+            background: transparent;
+            margin-left: 30px;
+            padding: 10px 30px;
+        }
+
+        .btn-group a:hover:nth-child(2) {
+            color: #fff;
+            background: #7d2ae8;
+        }
+
+        .social-icons {
+            position: absolute;
+            bottom: 50px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background: #7d2ae8;
+            border-radius: 50%;
+            margin-right: 22px;
+            text-align: center;
+            line-height: 35px;
+            border: 1px solid #fff;
+            outline: 2px solid #7d2ae8;
+            transition: .3s;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-5px);
+        }
+
+        .social-icons a i {
+            color: #fff;
+        }
+
+
+/* Media Queries for Mobile Adjustments */
+@media (max-width: 1050px) {
+    .home {
+        background-size: auto 100%; /* Adjust image size to fit the width of the screen */
+        background-position: top center; /* Focuses on the top of the image */
+        padding: 20px 50px; /* Adjust padding for smaller screens */
+    }
+
+    .intro-img {
+        top: -100px; /* Move the image off-screen */
+        right: 0;
+        width: 250px; /* Further reduce image size */
+        height: 250px; /* Maintain the circular shape */
+        opacity: 0; /* Hide the image */
+    }
+}
+
+@media (max-width: 480px) {
+    .home {
+        background-size: auto 100%; /* Adjust image size to fit better on mobile screens */
+        background-position: top center; /* Ensures focus on the top */
+        padding: 15px 30px; /* Further reduce padding */
+    }
+
+    .intro-img {
+        top: -150px; /* Move image off-screen for mobile */
+        width: 200px; /* Even smaller size for mobile */
+        height: 200px; /* Maintain circular shape */
+        opacity: 0; /* Hide the image */
+    }
+
+    .content {
+        max-width: 100%; /* Ensure content uses the full width on small screens */
+        padding: 0 15px; /* Adjust padding */
+    }
+}
+
+        /* About, Skills, Projects, OJT, and Contact Sections */
+       {
+        scroll-behavior: smooth;
+	}
+	
+	section {
+            padding: 40px 100px;
+	    scroll-margin-top: 70px; /* Adjust this value based on your header's height */
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #ecb602;
+        }
+
+       .skills, .projects, .ojt-experience {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 250px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: #7d2ae8;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+    background-color: #d1d7e0;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+            max-width: 600px;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+
+        .modal-content img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    section {
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+
+    .section-title, 
+    #about p, 
+    #contact p, 
+    #contact a,
+    .modal-content {
+        text-align: left; /* Align text to the left */
+    }
+    
+    .skills,
+    .projects, 
+    .ojt-experience {
+        flex-direction: column; /* Stack cards vertically */
+        gap: 10px; /* Reduce gap between cards */
+    }
+    .card {
+        min-width: 100%; /* Make cards take full width */
+        text-align: left; /* Align text within cards to the left */
+    }
+    .modal-content {
+        width: 90%; /* Make modal content more mobile-friendly */
+    }
+}
+/* Fade-in effect */
+.fade-in {
+    animation: fadeIn 2s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+/* Typing Effect */
+#typed-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid;
+    animation: typing 4s steps(40, end), blink 0.5s step-end infinite;
+}
+
+/* Define typing effect */
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%; /* Width expands to show the full text */
+    }
+}
+
+/* Blinking cursor */
+@keyframes blink {
+    50% {
+        border-color: transparent; /* Makes the cursor disappear at halfway point */
+    }
+}
+
+/* Ensure the class is applied to the element */
+.typed-text {
+    animation: typing 4s steps(40, end), blink 0.5s step-end infinite;
+}
+
+/* Media Queries for responsiveness */
+
+/* For tablets and smaller devices */
+@media (max-width: 768px) {
+    #typed-text {
+        font-size: 2.5rem; /* Adjust font size for tablets and smaller devices */
+    }
+}
+
+/* For mobile phones */
+@media (max-width: 480px) {
+    #typed-text {
+        font-size: 2rem; /* Smaller font size for phones */
+    }
+}
+    </style>
+</head>
+<body>
+<header>
+<a href="#" class="logo">
+    <h2><span>C</span>lintt</h2>
+</a>
+    <nav class="navigation">
+        <a href="#">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#ojt">My Experience</a>
+        <!-- Added Contact Me Button to Navigation -->
+	<div class="btn-group">
+        <a href="#contact" class="btn-talk">Contact Me</a>
+	 </div>
+    </nav>
+    <!-- Hamburger Icon -->
+    <div class="hamburger" id="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+</header>
+    <section class="home">
+        <div class="content" class="content fade-in">
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+    <h2 id="typed-text">Hi, I'm <span>Clintt Adora</span></h2>
+            <h3>Software Engineer | QA Tester</h3>
+            <p>Committed to delivering quality software solutions through innovation and testing excellence. Explore my projects and skills!</p>
+            <div class="btn-group">
+                <a href="CLINTT ADORA_RESUME.pdf" class="download-btn" target="_blank">Download Resume</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/clinttadora/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://github.com/ClAdora" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.facebook.com/clinttadoraa/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            </div>
+        </div>
+    <img src="Circle.png" alt="Clintt Adora" class="intro-img">
+    </section>
+
+<section id="about" class="fade-in">
+        <h2 class="section-title">About Me</h2>
+	<p style="color: #FFFFFF;">I am a Computer Science graduate from FEU Institute of Technology, specializing in Software Engineering. 
+	I have strong skills in programming, web development, and QA testing, with experience using languages like Python, C#, Java, SQL, HTML, CSS, and JavaScript. 
+	I also work with Unity for game development and Jira Software for managing projects. I’ve earned certifications in Ethical Hacking, Agile Testing, Cyber Threat Intelligence, 
+	and Applied Machine Learning, showing my commitment to staying updated with the latest tech trends.</p>
+	<br>
+	<p style="color: #FFFFFF;">I’m passionate about solving problems and bringing ideas to life, which led me to become Runner-Up in the Design Thinking and Technopreneurship Pitching Competitions. 
+	As a top-performing student at FEU TECH and a graduate with High Honors from AMA Computer College Pasig, I have developed a strong sense of dedication and teamwork. I’m an active member of tech organizations 
+	like the Automated Computer Machinery and always look for opportunities to apply my skills to exciting projects and grow further in the tech world.</p>
+    </section>
+
+    
+<section id="skills">
+<div class="fade-in">
+    <h2 class="section-title">Skills</h2>
+</div>
+    <div class="skills">
+        <div class="card onmouseover="showTooltip(event, '80%')" onmouseout="hideTooltip()">
+            C
+            <div class="tooltip">80%</div>
+        </div>
+        <div class="card" onmouseover="showTooltip(event, '80%')" onmouseout="hideTooltip()">
+            C#
+            <div class="tooltip">90%</div>
+        </div>
+        <div class="card" onmouseover="showTooltip(event, '90%')" onmouseout="hideTooltip()">
+            C++
+            <div class="tooltip">90%</div>
+        </div>
+        <div class="card" onmouseover="showTooltip(event, '75%')" onmouseout="hideTooltip()">
+            CSS
+            <div class="tooltip">75%</div>
+        </div>
+        <div class="card" onmouseover="showTooltip(event, '90%')" onmouseout="hideTooltip()">
+            Python
+            <div class="tooltip">90%</div>
+        </div>
+        <div class="card" onmouseover="showTooltip(event, '80%')" onmouseout="hideTooltip()">
+            HTML
+            <div class="tooltip">85%</div>
+        </div>
+        <div class="card" onmouseover="showTooltip(event, '75%')" onmouseout="hideTooltip()">
+            SQL
+            <div class="tooltip">75%</div>
+        </div>
+        <div class="card" onmouseover="showTooltip(event, '80%')" onmouseout="hideTooltip()">
+            Java
+            <div class="tooltip">80%</div>
+        </div>
+        <div class="card" onmouseover="showTooltip(event, '80%')" onmouseout="hideTooltip()">
+            JavaScript
+            <div class="tooltip">80%</div>
+        </div>
+        <div class="card" onmouseover="showTooltip(event, '90%')" onmouseout="hideTooltip()">
+            Programming
+            <div class="tooltip">95%</div>
+        </div>
+        <div class="card" onmouseover="showTooltip(event, '85%')" onmouseout="hideTooltip()">
+            Web Development
+            <div class="tooltip">85%</div>
+        </div>
+        <div class="card" onmouseover="showTooltip(event, '95%')" onmouseout="hideTooltip()">
+            QA Manual Testing
+            <div class="tooltip">95%</div>
+        </div>
+        <div class="card" onmouseover="showTooltip(event, '75%')" onmouseout="hideTooltip()">
+            Jira Software
+            <div class="tooltip">80%</div>
+        </div>
+        <div class="card" onmouseover="showTooltip(event, '80%')" onmouseout="hideTooltip()">
+            Unity
+            <div class="tooltip">85%</div>
+        </div>
+        <div class="card" onmouseover="showTooltip(event, '95%')" onmouseout="hideTooltip()">
+            Microsoft Office
+            <div class="tooltip">95%</div>
+        </div>
+        <div class="card" onmouseover="showTooltip(event, '90%')" onmouseout="hideTooltip()">
+            Canva
+            <div class="tooltip">80%</div>
+        </div>
+        <div class="card" onmouseover="showTooltip(event, '80%')" onmouseout="hideTooltip()">
+            Photo/Video Editing
+            <div class="tooltip">80%</div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    }
+
+    .card {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        flex: 1;
+        min-width: 250px;
+        text-align: center;
+    	cursor: default;
+    	position: relative;
+    }
+
+    .card:hover {
+    	background-color: #fcc50b;
+    }
+
+    #skills .card {
+    	cursor: default;
+    }
+
+    #projects .card, #ojt .card {
+    	cursor: pointer;
+    }
+
+    .tooltip {
+        display: none;
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #7d2ae8;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .card:hover .tooltip {
+        display: block;
+        opacity: 1;
+    }
+</style>
+
+<script>
+    function showTooltip(event, percentage) {
+        const tooltip = event.target.querySelector('.tooltip');
+        tooltip.textContent = percentage;
+    }
+
+    function hideTooltip() {
+    }
+</script>
+ 
+
+    <section id="projects" class="fade-in">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects">
+            <div class="card" onclick="openModal('lungti')">
+                <h3>LUNGTI</h3>
+                <p>(University Project) Unity with Machine Learning</p>
+            </div>
+            <div class="card" onclick="openModal('lexicon')">
+                <h3>LEXICON</h3>
+                <p>(Senior High Project) Using Unity</p>
+            </div>
+        </div>
+    </section>
+
+<section id="ojt" class="fade-in">
+    <h2 class="section-title">My Experience</h2>
+    <div class="ojt-experience">
+        <div class="card" onclick="openModal('taxumo')">
+            <h3>TAXUMO Inc.</h3>
+            <p>Manual Testing/Software Testing</p>
+        </div>
+        <div class="card" onclick="openModal('highlysucceed')">
+            <h3>HIGHLY SUCCEED Inc.</h3>
+            <p>Manual Testing/Software Testing</p>
+        </div>
+    </div>
+</section>
+
+
+    <section id="contact" class="fade-in">
+        <h2 class="section-title">Contact Me</h2>
+        <p style="color: #FFFFFF;">Email: <a href="mailto:clinttmadora@gmail.com" style="color: #ecb602;">clinttmadora@gmail.com</a></p>
+        <p style="color: #FFFFFF;">Phone: <a href="tel:+639166486844" class="phone-link" style="color: #ecb602;">09166486844</a></p>
+	<p style="color: #FFFFFF;">LinkedIn: <a href="https://www.linkedin.com/in/clinttadora/" target="_blank" style="color: #ecb602;">Clintt Adora</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Clintt Adora's Portfolio</p>
+    </footer>
+
+<div id="lungti-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('lungti')">&times;</span>
+    	<h2 style="color: #7d2ae8; text-align: center; font-size: 40px; text-shadow: 2px 2px 4px rgba(0.5, 0, 0, 0.5);">LUNGTI</h2>
+	<h2 style="font-size: 13px; text-align: center;">Providing IoT service through Augmented and Virtual Reality Tour with Navigation in Manila Zoo.</h2>
+	<br>
+        <p style="font-size: 13px; text-align: left;">The project will be a valuable contribution to the field of education and tourism. It offers visitors a fresh 
+	and captivating approach to discovering and learning about zoo animals and their habitats, through the integration of IoT. By using a QR reader to 
+	access trivia-based questions related to the animals and their habitats, visitors can test their knowledge and learn new information. The augmented 
+	reality navigation system within the Manila Zoo provides a seamless navigational experience, making it easier for visitors to navigate the zoo and find 
+	their desired destination. With the use of cutting-edge AR/VR technology, the initiative aims to deliver an exceptional and immersive experience that will 
+	ultimately enrich the overall visit to the Manila Zoo for users.</p>
+        <div style="margin-top: 20px;">
+            <video id="lungti-video" width="100%" controls>
+                <source src="LUNGTI.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</div>
+<div id="lexicon-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('lexicon')">&times;</span>
+        <h2 style="color: #7d2ae8; text-align: center; font-size: 40px; text-shadow: 2px 2px 4px rgba(0.5, 0, 0, 0.5);">LEXICON</h2>
+        <h2 style="font-size: 17px; text-align: center;">Word Game Using Unity</h2>
+	<br>
+        <p style="font-size: 13px; text-align: left;">This project is made to help students remember and learn more academic words while having fun. The game is 
+	both a way to enjoy playing and to learn something useful. Each level is designed to give players new words to learn and keep them interested.
+        <br>
+	<br>
+	This project is great for grade school and high school students. It can also help teachers by being a tool that adds to regular classroom lessons. By turning 
+	learning into a game, this project helps students remember words better and improve their thinking and problem-solving skills. It mixes fun and learning, making 
+	it good for students of any age.</p>
+        <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+            <video id="lexicon-video" width="60%" controls>
+                <source src="LEXICON.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</div>
+   
+    <div id="taxumo-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('taxumo')">&times;</span>
+    	    <h2 style="color: #7d2ae8; text-align: center;">TAXUMO Inc.</h2>
+	    <br>
+	    <p style="text-align: left; font-size: 15px;">•<b>Taxumo Sandbox Website:</b> Thorough testing (always ahead of timelines) and detailed error documentation and reporting of the sandbox environment to ensure a secure space before it is introduced into the production environment.</p>
+	    <p style="text-align: left; font-size: 15px;">•<b>Taxumo Production Website:</b> Timely testing and effective prioritization when processing Jira case tickets reported by customers and users encountering bugs or post-production errors. These helps improve UI and UX.</p>
+	    <p style="text-align: left; font-size: 15px;">•<b>BIR Form System:</b> Meticulous review, accuracy checks, and comparison of customer filings and entries in the BIR Form System versus the Taxumo Form to ensure accurate information, entries, and the same progress in tax filing.</p>
+	    <p style="text-align: left; font-size: 15px;">•<b>Tax Calculator:</b> Through own initiative, have created an automated tax calculation system via Excel that improved efficiency from 15 minutes to just a few seconds.</p>
+	    <br>
+            </div>
+        </div>
+    </div>
+
+    <div id="highlysucceed-modal" class="modal">
+        <div class="modal-content">
+    	<span class="close" onclick="closeModal('highlysucceed')">&times;</span>
+    	    <h2 style="color: #7d2ae8; text-align: center;">HIGHLY SUCCEED Inc.</h2>
+	    <p style="text-align: center; font-size: 12px;">QA Manual Testing using Jira Software for the following applications:</p>
+	    <br>
+	    <p style="text-align: left; font-size: 15px;">•<b>AMEN (Mobile and Web App):</b> Online Courses / Edu Tech</p>
+	    <p style="text-align: left; font-size: 15px;">•<b>TRAVERSE (Mobile and Web App):</b> Travel Agency / Travel Tech</p>
+	    <p style="text-align: left; font-size: 15px;">•<b>HAI (Mobile and Web App):</b> HighlyGPT / Gen AI developed internally</p>
+	    <p style="text-align: left; font-size: 15px;">•<b>BSA (Mobile and Web App):</b> Brgy. San Antonio, Pasig Backoffice Portal</p>
+	    <p style="text-align: left; font-size: 15px;">•<b>UNLEASH (Mobile App):</b> Social networking platform for pet owners and animal lovers to connect and share the joy of pet ownership.</p>
+	    <p style="text-align: left; font-size: 15px;">•<b>STRIKE (Mobile and Web App):</b> Digitized solutions and community empowerment through citizen reporting, e-services, e-commerce, a city directory, payment gateway, and social media engagement. / Super App</p>
+	    <br>
+            </div>
+        </div>
+    </div>
+    <script>
+// Function to open the modal
+function openModal(modalId) {
+    const modal = document.getElementById(`${modalId}-modal`);
+    modal.style.display = 'flex';
+
+    // Hide the header
+    const header = document.querySelector('header');
+    header.classList.add('hidden');
+}
+
+// Function to close the modal and stop the video
+function closeModal(modalId) {
+    const modal = document.getElementById(`${modalId}-modal`);
+    modal.style.display = 'none';
+
+    // Show the header
+    const header = document.querySelector('header');
+    header.classList.remove('hidden');
+
+    // Stop video playback if it exists
+    const video = modal.querySelector('video');
+    if (video) {
+        video.pause(); // Pause the video
+        video.currentTime = 0; // Reset the video to the start
+    }
+}
+// JavaScript for toggling the menu
+document.getElementById('hamburger').addEventListener('click', function(event) {
+    event.stopPropagation(); // Prevents the click from bubbling up to the document
+    const nav = document.querySelector('.navigation');
+    nav.classList.toggle('active'); // Toggle the 'active' class to show/hide menu
+});
+
+// Close the menu when any link is clicked
+const navLinks = document.querySelectorAll('.navigation a');
+navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+        document.querySelector('.navigation').classList.remove('active'); // Close the menu
+    });
+});
+
+// Close the menu if clicked outside the hamburger or menu
+document.addEventListener('click', function(event) {
+    const nav = document.querySelector('.navigation');
+    const hamburger = document.getElementById('hamburger');
+
+    // If the click is outside the hamburger or the menu, close the menu
+    if (!hamburger.contains(event.target) && !nav.contains(event.target)) {
+        nav.classList.remove('active');
+    }
+});
+// Function to handle the intersection observation
+const fadeInSections = () => {
+  const sections = document.querySelectorAll('.fade-in');
+
+  // IntersectionObserver callback function
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const intersectionRatio = entry.intersectionRatio;
+
+      // We calculate the opacity based on the intersection ratio.
+      // The more visible the section, the higher the opacity.
+      const opacity = intersectionRatio;  // Will fade from 0 to 1
+
+      // Set the opacity directly based on how much of the section is visible
+      entry.target.style.opacity = opacity;
+    });
+  }, {
+    rootMargin: '0px',  // Observe the entire viewport
+    threshold: Array.from({ length: 101 }, (_, i) => i / 100),  // Track all 101 points between 0% and 100% visibility
+  });
+
+  // Observe each section
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+};
+
+// Call the function when the page loads
+window.addEventListener('load', fadeInSections);
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Select all sections you want to observe
+    const sections = document.querySelectorAll("section");
+    
+    // Create the Intersection Observer
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Update the URL hash without reloading the page
+                    history.replaceState(null, null, `#${entry.target.id}`);
+                }
+            });
+        },
+        {
+            threshold: 0.5, // Trigger when 50% of the section is visible
+        }
+    );
+    
+    // Observe each section
+    sections.forEach((section) => observer.observe(section));
+});
+document.addEventListener("DOMContentLoaded", () => {
+    // Redirect to #home if no hash is present in the URL
+    if (!window.location.hash) {
+        history.replaceState(null, null, "#home");
+    }
+
+    // Section Observer Logic (as described previously)
+    const sectionHeaders = document.querySelectorAll("section h2.section-title");
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Update the URL hash to match the section ID
+                    const sectionId = entry.target.parentElement.id; // Get parent section's ID
+                    history.replaceState(null, null, `#${sectionId}`);
+                }
+            });
+        },
+        {
+            root: null, // Use viewport as root
+            threshold: 0.5, // Trigger when 50% of the header is visible
+        }
+    );
+
+    // Observe each section header
+    sectionHeaders.forEach((header) => observer.observe(header));
+});
+// Function to restart the typing animation
+function restartTypingEffect() {
+    const typedText = document.getElementById('typed-text');
+    
+    // Temporarily remove the typing animation class to reset the animation
+    typedText.style.animation = 'none'; // Stop any ongoing animation
+    typedText.offsetHeight; // Trigger reflow
+    typedText.style.animation = ''; // Reapply the animation
+    
+    // You can also re-add the class if you prefer using a class for the animation.
+    // typedText.classList.remove('typed-text');
+    // typedText.classList.add('typed-text');
+}
+
+// Event listener for home page icon or header menu links with `#`
+document.querySelectorAll('a[href="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+        // Prevent the default link behavior
+        e.preventDefault();
+        
+        // Restart the typing effect
+        restartTypingEffect();
+
+        // Optionally, scroll to the top of the page (for smooth navigation)
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
+</script>
+</body>
+</html>
