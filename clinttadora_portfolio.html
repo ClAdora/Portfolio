@@ -277,13 +277,16 @@ h1 {
 /* Image positioning */
 .intro-img {
     position: absolute;
-    top: 245px; /* Position image near the top */
     right: 100px; /* Position image to the right */
-    width: 350px; /* Adjust image size */
-    height: 350px; /* Set the height equal to the width for a perfect circle */
     border-radius: 50%; /* Make the image circular */
     object-fit: cover; /* Ensures the image fits within the circle without distortion */
     transition: all 0.5s ease; /* Smooth transition for move and hide */
+    background-size: auto 100%; /* Adjust image size to fit the width of the screen */
+    background-position: top center; /* Focuses on the top of the image */
+    padding: 20px 50px; /* Adjust padding for smaller screens */
+    background-size: auto 100%; /* Adjust image size to fit better on mobile screens */
+    background-position: top center; /* Ensures focus on the top */
+    padding: 15px 30px; /* Further reduce padding */
 }
 
 
@@ -354,8 +357,6 @@ h1 {
     .intro-img {
         top: -100px; /* Move the image off-screen */
         right: 0;
-        width: 250px; /* Further reduce image size */
-        height: 250px; /* Maintain the circular shape */
         opacity: 0; /* Hide the image */
     }
 }
@@ -589,8 +590,8 @@ h1 {
     <div class="bg bg3"></div>
     <h2 id="typed-text">Hi, I'm <span>Clintt Adora</span></h2>
             <h3>Software Engineer | QA Tester</h3>
-            <p>Creating high-quality software with great testing, focused on QA testing and web/app development to make reliable, 
-	     user-friendly solutions. Always improving testing skills and making software that meets the needs of users. Explore my projects and skills!</p>
+            <p>I specialize in web/app development and QA testing to create reliable, user-friendly software solutions. 
+		I am dedicated in delivering high-quality applications that meet user needs, while constantly improving my skills in development and testing. Check out my works!</p>
             <div class="btn-group">
                 <a href="CLINTT ADORA_RESUME.pdf" class="download-btn" target="_blank">Download Resume</a>
             </div>
